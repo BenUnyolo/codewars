@@ -4,7 +4,7 @@ Create a function that takes a Roman numeral as its argument and returns its val
 
 export function solution(roman: string): number {
     // define numerals object
-    const numerals: {[index: string]: number} = {
+    const numerals: { [index: string]: number } = {
         "I": 1,
         "V": 5,
         "X": 10,
@@ -16,13 +16,13 @@ export function solution(roman: string): number {
 
     // split roman numbers argument into array
     const split = roman.split("");
-    
+
     // reduce to numeric value
-    return split.reduce((total, current, index) => {
-        // checks for 4
-        if (current === "I" && (split[index + 1] === "V")) return total - 1 
+    return split.reduce((total, current, index, array) => {
+        // checks for subtractive notation, and subtracts if so
+        if (numerals[array[index + 1]] > numerals[current]) return total - numerals[current]
         return total + numerals[current]
     }, 0)
 }
 
-console.log(solution("MDCLXIV"))
+// console.log(solution("MCMXC"))

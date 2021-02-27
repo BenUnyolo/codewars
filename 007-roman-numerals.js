@@ -18,12 +18,12 @@ function solution(roman) {
     // split roman numbers argument into array
     var split = roman.split("");
     // reduce to numeric value
-    return split.reduce(function (total, current, index) {
-        // checks for 4
-        if (current === "I" && (split[index + 1] === "V"))
-            return total - 1;
+    return split.reduce(function (total, current, index, array) {
+        // checks for subtractive notation, and subtracts if so
+        if (numerals[array[index + 1]] > numerals[current])
+            return total - numerals[current];
         return total + numerals[current];
     }, 0);
 }
 exports.solution = solution;
-console.log(solution("MDCLXIV"));
+// console.log(solution("MCMXC"))

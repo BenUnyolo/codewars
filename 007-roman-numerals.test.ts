@@ -24,4 +24,12 @@ describe('testing various roman numerals', () => {
     test('expect MMVIII to equal 2008', () => {
         expect(solution('MDCLXIV')).toBe(1664);
     });
+
+    test('expect MCMXC to equal 1990', () => {
+        expect(solution('MCMXC')).toBe(1990);
+    });
+
+    test('expect MMMCMXCIX to equal 3999', () => {
+        expect(solution('MMMCMXCIX')).toBe(3999);
+    });
 })
